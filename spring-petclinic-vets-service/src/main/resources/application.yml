@@ -8,6 +8,15 @@ spring:
   profiles:
     active: production
 
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin.observability.svc.cluster.local:9411/api/v2/spans
+
 ---
 spring:
   config:
