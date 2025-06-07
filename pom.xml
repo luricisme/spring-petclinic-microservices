@@ -67,17 +67,6 @@
                 <version>${jolokia-core.version}</version>
             </dependency>
             
-            <!-- Spring Actuator  -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-            </dependency>
-
-            <!-- Micrometer Prometheus -->
-            <dependency>
-                <groupId>io.micrometer</groupId>
-                <artifactId>micrometer-registry-prometheus</artifactId>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -103,7 +92,15 @@
                                 </goals>
                                 <configuration>
                                     <additionalProperties>
-                                        <encoding.source>${project.build.sourceEncoding}</encoding.source>
+                               <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>3.2.5</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>             <encoding.source>${project.build.sourceEncoding}</encoding.source>
                                         <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
                                         <java.version>${java.version}</java.version>
                                     </additionalProperties>

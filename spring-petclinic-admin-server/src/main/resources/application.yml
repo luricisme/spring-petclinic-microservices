@@ -1,22 +1,15 @@
 spring:
-  application:
-    name: admin-server
-  config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
-
-
----
-spring:
-  config:
-    activate:
-      on-profile: docker
-    import: configserver:http://config-server:8888
-
-spring:
-  boot:
-    admin:
-      client:
+  cloud:
+    config:
+      import-check:
         enabled: false
+  server:
+    port: 9090
+  
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
 
 management:
   endpoints:
