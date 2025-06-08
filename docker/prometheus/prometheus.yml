@@ -6,13 +6,12 @@ global:
 
 # Alertmanager configuration
 rule_files:
-  - "/etc/prometheus/alert_rules.yml"
+  - "/etc/prometheus/rules/alert_rules.yml"
 
 alerting:
   alertmanagers:
     - static_configs:
-        - targets:
-            - alertmanager:9093
+        - targets: ['alertmanager:9093']
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
