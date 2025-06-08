@@ -30,14 +30,3 @@ public class VisitsServiceApplication {
         SpringApplication.run(VisitsServiceApplication.class, args);
     }
 }
-
-@RestController
-@RequestMapping("/test")
-public class TestErrorController {
-
-    @GetMapping("/fail")
-    public ResponseEntity<String> fail() {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Simulated error");
-    }
-}
