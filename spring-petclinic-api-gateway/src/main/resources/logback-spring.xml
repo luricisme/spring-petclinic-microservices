@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true">
+<<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!-- Required for Loglevel managment into the Spring Petclinic Admin Server-->
+    <jmxConfigurator/>
+    <property name="CONSOLE_LOG_PATTERN"
+        value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - traceId=%X{traceId} spanId=%X{spanId} - %msg%n"/>
 
-  <!-- Khai báo encoder JSON -->
-  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
 
-  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-      <fieldNames>
-        <timestamp>timestamp</timestamp>
-        <level>level</level>
-        <thread>thread</thread>
-        <logger>logger</logger>
-        <message>message</message>
-      </fieldNames>
-
-      <customFields>{"app_name":"my-service"}</customFields>
-
-      <includeMdcKeyName>traceId</includeMdcKeyName>
-      <includeMdcKeyName>spanId</includeMdcKeyName>
-    </encoder>
-  </appender>
-
-  <root level="INFO">
-    <appender-ref ref="CONSOLE"/>
-  </root>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
 </configuration>
